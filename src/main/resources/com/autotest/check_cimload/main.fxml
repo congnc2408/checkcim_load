@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TableView?>
+<VBox prefHeight="600.0" prefWidth="800.0" spacing="10.0" xmlns="http://javafx.com/fxml/1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.autotest.check_cimload.Main">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+        <Label text="Check Cimload">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+    </HBox>
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Button fx:id="btnChoose" mnemonicParsing="false" text="Choose" onAction="#chooseFile"/>
+        <Button fx:id="btnCheck" mnemonicParsing="false" text="Check"/>
+        <Button fx:id="btnReset" mnemonicParsing="false" text="Reset"/>
+    </HBox>
+    <VBox spacing="5.0">
+        <Label text="Table"/>
+        <TableView fx:id="tblExcel" prefHeight="200.0" prefWidth="780.0">
+        </TableView>
+    </VBox>
+    <VBox spacing="5.0">
+        <Label text="Table"/>
+        <TableView fx:id="tblZIMI" prefHeight="200.0" prefWidth="780.0">
+
+        </TableView>
+    </VBox>
+</VBox>

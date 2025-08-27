@@ -42,6 +42,9 @@ public class ZimiMstrId implements Serializable {
         this.zIMI_Site = zIMI_Site;
     }
 
+    public ZimiMstrId() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

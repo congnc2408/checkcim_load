@@ -1,5 +1,6 @@
 package com.autotest.check_cimload.config;
 
+import com.autotest.check_cimload.model.ZimiMstrId;
 import com.autotest.check_cimload.model.Zimi_Mstr;
 import com.mysql.cj.x.protobuf.MysqlxResultset;
 import javafx.collections.FXCollections;
@@ -84,20 +85,22 @@ public class ExcelConfig {
     public  <T> List<T> testImportExcel(File file, Class<T> clazz) {
         List<T> resultList = new ArrayList<>();
         CSVFormat csvFormat = CSVFormat.DEFAULT.builder().build();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try(FileReader reader = new FileReader(file)) {
             CSVParser parser = new CSVParser(reader,csvFormat);
             for (CSVRecord record : parser){
               T obj = clazz.getDeclaredConstructor().newInstance();
               if (obj instanceof Zimi_Mstr){
                   Zimi_Mstr zimi_mstr = (Zimi_Mstr) obj;
-                  zimi_mstr.getId().setzIMI_Id(record.get(0));
+                  ZimiMstrId zimiMstrId = new ZimiMstrId();
+                  zimiMstrId.setzIMI_Id(record.get(0));
+                  zimiMstrId.setzIMI_Site(record.get(13));
+                  zimi_mstr.setId(zimiMstrId);
                   zimi_mstr.setzIMI_Decision(record.get(1));
                   zimi_mstr.setzIMI_Part(record.get(2));
                   zimi_mstr.setzIMI_Sample(Integer.parseInt(record.get(3)));
                   zimi_mstr.setzIMI_Insp(record.get(10));
                   zimi_mstr.setzIMI_Vendor(record.get(12));
-                  zimi_mstr.getId().setzIMI_Site(record.get(13));
                   String dateStr = record.get(14);
                   Date rcpdate = sdf.parse(dateStr);
                   zimi_mstr.setzIMI_Rcpdate(rcpdate);

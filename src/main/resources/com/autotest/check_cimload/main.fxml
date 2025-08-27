@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.TableView?>
-<VBox prefHeight="600.0" prefWidth="800.0" spacing="10.0" xmlns="http://javafx.com/fxml/1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.autotest.check_cimload.Main">
+<VBox prefHeight="600.0" prefWidth="800.0" spacing="10.0" xmlns="http://javafx.com/fxml/1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.autotest.check_cimload.MainController">
     <padding>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
     </padding>
@@ -23,8 +23,8 @@
     </HBox>
     <HBox alignment="CENTER_LEFT" spacing="10.0">
         <Button fx:id="btnChoose" mnemonicParsing="false" text="Choose" onAction="#chooseFile"/>
-        <Button fx:id="btnCheck" mnemonicParsing="false" text="Check"/>
-        <Button fx:id="btnReset" mnemonicParsing="false" text="Reset"/>
+        <Button fx:id="btnCheck" mnemonicParsing="false" text="Check" onAction="#Check"/>
+        <Button fx:id="btnReset" mnemonicParsing="false" text="Reset" onAction="#Reset"/>
     </HBox>
     <VBox spacing="5.0">
         <Label text="Table"/>

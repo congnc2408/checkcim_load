@@ -4,6 +4,7 @@ import com.autotest.check_cimload.config.ButtonClickHandler;
 import com.autotest.check_cimload.config.ExcelConfig;
 import com.autotest.check_cimload.config.ViewTable;
 import com.autotest.check_cimload.model.Zimi_Mstr;
+import com.autotest.check_cimload.model.Imid_Daily;
 import com.autotest.check_cimload.service.Zimi_Service_Imp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,11 +37,11 @@ public class MainController {
     @FXML
     private TableView<Zimi_Mstr> tblZIMI;
 
-
     @FXML private TableColumn<Zimi_Mstr, String> zimiIdColumn;
     @FXML private TableColumn<Zimi_Mstr, String> zimiDecisionColumn;
     @FXML private TableColumn<Zimi_Mstr, String> zimiPartColumn;
     @FXML private TableColumn<Zimi_Mstr, Integer> zimiSampleColumn;
+    @FXML private TableColumn<Imid_Daily, String> imidModDateColumn;
     @FXML private TableColumn<Zimi_Mstr, String> zimiMrbcodeColumn;
     @FXML private TableColumn<Zimi_Mstr, Integer> zimiDefqtyColumn;
     @FXML private TableColumn<Zimi_Mstr, String> zimiMrbcode1Column;
@@ -78,6 +79,10 @@ public class MainController {
         zimiDecisionColumn = ViewTable.createColumn("Decision", record -> record.getzIMI_Decision());
         zimiPartColumn = ViewTable.createColumn("Part", record -> record.getzIMI_Part());
         zimiSampleColumn = ViewTable.createColumn("Sample", record -> record.getzIMI_Sample());
+        imidModDateColumn = ViewTable.createColumn("Mod_date",record -> {
+           Date date = record.getImid_mod_date();
+           return sdf.format(date);
+        });
         zimiInspColumn = ViewTable.createColumn("Insp", record -> record.getzIMI_Insp());
         zimiVendColumn = ViewTable.createColumn("Vendor", record -> record.getzIMI_Vendor());
         zimiSiteColumn = ViewTable.createColumn("Site", record -> record.getId().getzIMI_Site());

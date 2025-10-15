@@ -16,5 +16,6 @@
         <property name="hbm2ddl.auto">update</property>
 
         <mapping class="com.autotest.check_cimload.model.Zimi_Mstr"/>
+        <mapping class="com.autotest.check_cimload.model.Imid_Daily"></mapping>
     </session-factory>
 </hibernate-configuration>

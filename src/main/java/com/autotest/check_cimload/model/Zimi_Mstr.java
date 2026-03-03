@@ -40,6 +40,8 @@ public class Zimi_Mstr {
     private  String zIMI_Insp;
     @Column(name = "zimi_mrbstat")
     private  String zIMI_Mrbstat;
+    @Column(name = "zimi_mrb_vlabor")
+    private  String zIMI_Mbrvlabor;
     @Column(name = "zimi_vend")
     private  String zIMI_Vendor;
     @Column(name = "zimi_rcpdate")

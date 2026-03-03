@@ -73,16 +73,18 @@ public class ExcelConfig {
 
                 // You may want to save this data to the DB as part of your "check" logic
                 // zimiService.saveAll(excelData);
+                AlertUltils.showInformationAlert("Nhập file Excel thành công!", "Thông báo", "File Excel đã được nhập thành công.");
+                wb.close();
+                fis.close();
 
-                new Alert(Alert.AlertType.INFORMATION, "Nhập file Excel thành công!").showAndWait();
             }
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Nhập file Excel thất bại.").showAndWait();
+            AlertUltils.showErrorAlert("Lỗi khi nhập file Excel!", "Lỗi", "Đã xảy ra lỗi khi nhập file Excel. Vui lòng kiểm tra lại.");
             e.printStackTrace();
         }
     }
 
-    public  <T> List<T> testImportExcel(File file, Class<T> clazz) {
+    public <T> List<T> testImportExcel(File file, Class<T> clazz) {
         List<T> resultList = new ArrayList<>();
         CSVFormat csvFormat = CSVFormat.DEFAULT.builder().build();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -94,21 +96,23 @@ public class ExcelConfig {
                   Zimi_Mstr zimi_mstr = (Zimi_Mstr) obj;
                   ZimiMstrId zimiMstrId = new ZimiMstrId();
                   zimiMstrId.setzIMI_Id(record.get(0));
-                  zimiMstrId.setzIMI_Site(record.get(13));
+                  zimiMstrId.setzIMI_Site(record.get(14));
                   zimi_mstr.setId(zimiMstrId);
                   zimi_mstr.setzIMI_Decision(record.get(1));
                   zimi_mstr.setzIMI_Part(record.get(2));
                   zimi_mstr.setzIMI_Sample(Integer.parseInt(record.get(3)));
                   zimi_mstr.setzIMI_Insp(record.get(10));
                   zimi_mstr.setzIMI_Vendor(record.get(12));
-                  String dateStr = record.get(14);
+                  String dateStr = record.get(15);
                   Date rcpdate = sdf.parse(dateStr);
                   zimi_mstr.setzIMI_Rcpdate(rcpdate);
-                  zimi_mstr.setzIMI_Buyer(record.get(15));
+                  zimi_mstr.setzIMI_Buyer(record.get(16));
               }
                 resultList.add(obj);
             }
+            AlertUltils.showInformationAlert("Nhập file Excel thành công!", "", "File Excel đã được nhập thành công.");
         }catch (Exception e){
+            AlertUltils.showErrorAlert("Lỗi khi nhập file Excel!", "", "Đã xảy ra lỗi khi nhập file Excel. Vui lòng kiểm tra lại.");
             e.printStackTrace();
         }
         for (T abc : resultList){
